@@ -1,10 +1,21 @@
 #pragma once
 
-#include <vector>
 #include <string>
+#include <variant>
+#include <vector>
 
-void pearlCatch(std::vector<std::string> keys);
-void stunSlam(std::vector<std::string> keys);
+using ExtraValue = std::variant<bool, std::string>;
+
+void pearlCatch(
+  std::vector<std::string> keys,
+  std::vector<ExtraValue> extra);
+
+void stunSlam(
+  std::vector<std::string> keys,
+  std::vector<ExtraValue> extra);
+
 void breachSwap(std::vector<std::string> keys);
+
 void lungeSwap(std::vector<std::string> keys);
+
 void singleAnchor(std::vector<std::string> keys);

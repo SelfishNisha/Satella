@@ -17,7 +17,7 @@ void lungeSwap(std::vector<std::string> keys) {
   leftClick();
   keyPress(spear);
 
-  Sleep(50);  // 1 tick
+  preciseSleep(50);  // 1 tick
 
   keyPress(zcd);
 }

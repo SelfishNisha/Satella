@@ -17,7 +17,7 @@ void breachSwap(std::vector<std::string> keys) {
   leftClick();
   keyPress(mace);
   
-  Sleep(50);  // 1 tick
+  preciseSleep(50);  // 1 tick
 
   keyPress(sword);
 }

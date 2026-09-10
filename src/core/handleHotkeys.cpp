@@ -13,11 +13,11 @@
 void handleHotkeys(int hkid) {
   switch (hkid) {
     case 1:
-      pearlCatch(getKeys("Pearl Catch"));
+      pearlCatch(getKeys("Pearl Catch"), getExtra("Pearl Catch"));
       break;
 
     case 2:
-      stunSlam(getKeys("Stun Slam"));
+      stunSlam(getKeys("Stun Slam"), getExtra("Stun Slam"));
       break;
 
     case 3:

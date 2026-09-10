@@ -15,12 +15,12 @@ void singleAnchor(std::vector<std::string> keys) {
   keyPress(anchor);
   rightClick();
 
-  Sleep(50);  // 1 tick
+  preciseSleep(50); // 1 tick
 
   keyPress(glowstone);
   rightClick();
 
-  Sleep(50); // 1 tick
+  preciseSleep(50); // 1 tick
 
   keyPress(totem);
   rightClick();

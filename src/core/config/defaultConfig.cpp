@@ -10,6 +10,9 @@ const json defaultConfig = {
       {"Slots", {
         {"Pearl", "MOUSE_SIDE_BUTTON_FRONT"},
         {"Wind Charge", "X"}
+      }},
+      {"Extra", {
+        {"Speed", "Medium"}
       }}
     }},
 
@@ -21,6 +24,9 @@ const json defaultConfig = {
       {"Slots", {
         {"Axe", "2"},
         {"Mace", "1"}
+      }},
+      {"Extra", {
+        {"Switch Back To Axe", false}
       }}
     }},
 
