@@ -26,7 +26,7 @@ const json defaultConfig = {
         {"Mace", "1"}
       }},
       {"Extra", {
-        {"Switch Back To Axe", false}
+        {"Switch Back To Slot", ""}
       }}
     }},
 

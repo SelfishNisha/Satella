@@ -38,6 +38,10 @@ cd Sattela/
 ```
 
 ```bash
+./getLib.bat
+```
+
+```bash
 make build
 ```
 
