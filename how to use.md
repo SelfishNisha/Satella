@@ -1,4 +1,4 @@
-# How To Use Sattela
+# How To Use Satella
 
 ## Config Format
 
