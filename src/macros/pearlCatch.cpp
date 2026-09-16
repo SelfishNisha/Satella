@@ -10,7 +10,7 @@ enum Speed {
   Fast = 50 // 1 tick
 };
 
-Speed getSpeed(const std::string& speed) {
+Speed getSpeed(std::string& speed) {
   if (speed == "Slow")
     return Speed::Slow;
 
@@ -19,6 +19,8 @@ Speed getSpeed(const std::string& speed) {
 
   if (speed == "Fast")
     return Speed::Fast;
+
+  return Speed::Medium;
 }
 
 int getMs(Speed speed) {

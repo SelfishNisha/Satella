@@ -4,7 +4,7 @@ LDFLAGS = -lwinmm -static
 SRC_DIR = src
 OBJ_DIR = objects
 DIST_DIR = dist
-TARGET = $(DIST_DIR)/Sattela.exe
+TARGET = $(DIST_DIR)/Satella.exe
 
 # Use all cores by default. Override per-invocation with `make -j1` if you ever need serial.
 MAKEFLAGS += -j$(NUMBER_OF_PROCESSORS)

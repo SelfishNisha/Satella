@@ -30,7 +30,7 @@ The project is open source, if you suspect any kind of malware you can read the 
 ## Building From Source
 
 ```bash
-git clone https://github.com/SelfishNisha/Sattela.git
+git clone https://github.com/SelfishNisha/Satella.git
 ```
 
 ```bash

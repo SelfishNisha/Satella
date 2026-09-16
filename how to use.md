@@ -37,6 +37,28 @@ You may have noticed values like `MOUSE_SIDE_BUTTON_FRONT`, these refer to mouse
 
 Use these anywhere a slot expects a keybind that is bounded to a mouse side button.
 
+### Customizable parts
+
+You may have noticed some macros have an `extra` option in them.
+
+```json
+"Extra": {
+  "Switch Back To Slot": "2"
+}
+```
+
+and
+
+```json
+"Extra": {
+  "Speed": "Medium"
+}
+```
+
+the first one accepts a keybind key. if you don't want the option enabled make the field empty
+
+the second accepts `Fast` `Medium` `Slow`. default is `Medium`
+
 --- 
 
 ## Triggering Macros
@@ -47,4 +69,4 @@ Triggering macros are those that perform an action one time.
 - Stun Slam
 - Lunge Swap
 - Breach Swap
-- Anchor
+- Single Anchor

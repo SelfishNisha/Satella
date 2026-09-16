@@ -55,8 +55,8 @@ const json defaultConfig = {
     {"Single Anchor", {
       {"ID", 5},
       {"Enabled", false},
-      {"Mod Key", "ALT"},
-      {"Key", "A"},
+      {"Mod Key", "CTRL"},
+      {"Key", "TAB"},
       {"Slots", {
         {"Respawn Anchor", "X"},
         {"Glowstone", "C"},
