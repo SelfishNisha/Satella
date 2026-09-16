@@ -34,7 +34,7 @@ git clone https://github.com/SelfishNisha/Sattela.git
 ```
 
 ```bash
-cd Sattela/
+cd Satella/
 ```
 
 ```bash
@@ -45,4 +45,4 @@ cd Sattela/
 make build
 ```
 
-Done your .exe is in dist/Sattela.exe
+Done your .exe is in dist/Satella.exe
