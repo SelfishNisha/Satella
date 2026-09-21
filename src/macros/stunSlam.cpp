@@ -17,12 +17,12 @@ void stunSlam(std::vector<std::string> keys, std::vector<ExtraValue> extra) {
 
   keyPress(axe);
   leftClick();
-  preciseSleep(53);  // 1.05 tick
+  preciseSleep(45);  // 1.05 tick
   keyPress(mace);
   leftClick();
   
   if (switchBackTo.compare("")) {
-    preciseSleep(53); // 1.05 tick
+    preciseSleep(100); // 2 tick
     keyPress(switchBackTo);
   }
 }
