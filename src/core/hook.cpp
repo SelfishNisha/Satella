@@ -3,7 +3,6 @@
 #include <atomic>
 #include <memory>
 #include <thread>
-#include <vector>
 #include "core.h"
 
 static std::atomic<bool> g_physKeyState[256] = {};

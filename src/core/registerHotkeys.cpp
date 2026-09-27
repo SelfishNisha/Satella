@@ -1,6 +1,4 @@
-#include <windows.h>
 #include <iostream>
-#include <variant>
 #include "core.h"
 #include "config/config.h"
 #include "../../lib/rang.hpp"
