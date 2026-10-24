@@ -70,3 +70,49 @@ Triggering macros are those that perform an action one time.
 - Lunge Swap
 - Breach Swap
 - Single Anchor
+
+
+## How to edit config from TUI
+
+so, first of all, we still follow [this format](#config-format).
+
+---
+
+### Key
+
+![Key img](images/key.png)
+
+just input any letter, for example, if we input `X` (and the mod key is empty) when we press `X` the macro will  be activated.
+
+### Mod Key
+
+![Mod Key img](images/modKey.png)
+
+This has limited inputs... i think, anyways
+this means you have to press both mod key button and key button to activate the macro, for example, if i put `ALT` in my mod key and put `Q` in my key, i have to press `ALT+Q` to activate the macro.
+
+### Slots
+
+![Slots img](images/slots.png)
+
+This is the keys you have to press to go to each slot that has the given item in, for example, if i need to press `F` to go to my 9th slot which has my windcharge in it i put `F` inside the windcharge input.
+
+### Pearl catch extras
+
+![pearl catch extras img](images/pearl%20catch%20extra.png)
+
+This takes 3 inputs
+
+`Fast` | `Medium` | `Slow`
+
+Fast waits 1 tick before using wind charge
+
+Medium does 2 tick
+
+and Slow does 4 tick
+
+### Stun slam extras
+
+![stun slam extas img](images/stun%20slam%20extra.png)
+
+This determinds if the macro should switch to a slot after finishing the stun slam, you can give it a [key](#key)
