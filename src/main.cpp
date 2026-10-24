@@ -1,4 +1,5 @@
 #include "core/core.h"
+#include "ui/ui.h"
 
 void setRealtimePriority() {
   // Get current process handle
@@ -23,7 +24,8 @@ void setRealtimePriority() {
 
 int main() {
   setRealtimePriority();
-  registerHotkeys();
+  // registerHotkeys();
+  Root();
 
   return 0;
 }

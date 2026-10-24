@@ -1,6 +1,4 @@
-#include <Windows.h>
 #include <algorithm>
-#include <string>
 #include <unordered_map>
 #include "core.h"
 

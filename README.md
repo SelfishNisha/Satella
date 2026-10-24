@@ -24,8 +24,9 @@ The project is open source, if you suspect any kind of malware you can read the 
 
 ## Dependencies
 
-[nlohmann/json v3.12.0](https://github.com/nlohmann/json/releases/tag/v3.12.0)
-[agauniyal/rang v3.3](https://github.com/agauniyal/rang/releases/tag/v3.3)
+- [nlohmann/json v3.12.0](https://github.com/nlohmann/json/releases/tag/v3.12.0)
+- [agauniyal/rang v3.3](https://github.com/agauniyal/rang/releases/tag/v3.3)
+- [jonoton/cpp-tui](https://github.com/jonoton/cpp-tui)
 
 ## Building From Source
 

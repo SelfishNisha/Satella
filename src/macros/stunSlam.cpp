@@ -1,7 +1,3 @@
-#include <Windows.h>
-#include <string>
-#include <vector>
-#include <variant>
 #include "../core/core.h"
 #include "macros.h"
 
