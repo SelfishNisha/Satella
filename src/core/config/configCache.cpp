@@ -9,3 +9,7 @@ json getConfig() {
   }
   return configCache;
 }
+
+// drops the cached config so the next getConfig() re-reads config.json from
+// disk (used after the TUI writes changes live)
+void invalidateConfigCache() { configCache = json(); }

@@ -1,6 +1,3 @@
-#include <vector>
-#include <string>
-#include <Windows.h>
 #include "macros.h"
 #include "../core/core.h"
 

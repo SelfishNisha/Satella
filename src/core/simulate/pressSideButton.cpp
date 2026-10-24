@@ -1,6 +1,3 @@
-#include <Windows.h>
-#include <string>
-#include <variant>
 #include "../core.h"
 
 /**

@@ -1,6 +1,3 @@
-#include <windows.h>
-#include <iostream>
-#include <vector>
 #include "core.h"
 
 std::vector<HotkeyBinding> g_hotkeys;
