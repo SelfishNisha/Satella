@@ -24,7 +24,7 @@ part<Border> Footer() {
   footInner->add(helpLine);
 
   auto hint1 = mkpart<Label>(
-      "F4 · quit   |   Tab · move focus   |   Enter/Space · toggle");
+      "Tab · move focus   |   Enter/Space · toggle");
   hint1->fg_color = Color(114, 118, 146);
   footInner->add(hint1);
 

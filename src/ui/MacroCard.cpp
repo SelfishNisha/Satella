@@ -18,12 +18,21 @@ part<Border> buildMacroCard(const std::string &name, const json &macro) {
   title->fg_color = enabled ? Color(158, 206, 106) : Color(96, 100, 130);
   addRow(title);
 
+  // The border wraps the whole card. Construct it here so the toggle below can
+  // recolor it the instant the macro is enabled or disabled.
+  auto border = mkpart<Border>();
+  border->fixed_height = rows + 2;
+  border->height = rows + 2;
+  border->set_color(enabled ? Color(158, 206, 106) : Color(41, 46, 66));
+  border->add(inner);
+
   // Enabled toggle
   auto chk = mkpart<Checkbox>(StyledText("   Enabled"), enabled);
-  chk->on_change = [name](bool v) {
+  chk->on_change = [border, name](bool v) {
     g_config["Macros"][name]["Enabled"] = v;
     notifyConfigChanged();
     setStatus((v ? "Enabled  " : "Disabled ") + name, 1500);
+    border->set_color(v ? Color(158, 206, 106) : Color(41, 46, 66));
   };
   addRow(chk);
 
@@ -97,11 +106,9 @@ part<Border> buildMacroCard(const std::string &name, const json &macro) {
   inner->fixed_height = rows;
   inner->height = rows;
 
-  auto border = mkpart<Border>();
+  // Final sizing of the wrapper so it matches the fully-built card.
   border->fixed_height = rows + 2;
   border->height = rows + 2;
-  border->set_color(enabled ? Color(158, 206, 106) : Color(41, 46, 66));
-  border->add(inner);
 
   return border;
 }

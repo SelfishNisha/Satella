@@ -24,7 +24,6 @@ void setRealtimePriority() {
 
 int main() {
   setRealtimePriority();
-  // registerHotkeys();
   Root();
 
   return 0;
