@@ -1,4 +1,5 @@
 #include <iostream>
+#include <atomic>
 #include "core.h"
 #include "config/config.h"
 #include "../../lib/rang.hpp"
@@ -50,27 +51,21 @@ void registerHotkeys() {
       int id = macro["ID"].get<int>();
 
       bindHotkey(resolveKey(modKey), resolveKey(key), id);
-
-      // Better logging
-      std::string logMessage = getMacroName(id) + " Has Been Bound To ";
-      if (!modKey.empty()) {
-        logMessage += modKey + "+";
-      }
-      logMessage += key;
-
-      std::cout << rang::fg::green << logMessage << rang::fg::reset << std::endl;
-    } else {
-      int id = macro["ID"].get<int>();
-
-      std::cout << rang::fg::yellow << getMacroName(id) << " Is Disabled" << rang::fg::reset << std::endl;
     }
   }
 
   installHotkeyHook();
 
   MSG msg;
-  
   while (GetMessage(&msg, NULL, 0, 0)) {
+    // The TUI posts this when config.json changes live -> rebind on this
+    // thread, which owns the hook handle.
+    if (msg.message == WM_APP + 1) {
+      if (g_hotkeysDirty.exchange(false)) {
+        rebindHotkeysOnHookThread();
+      }
+      continue;
+    }
     TranslateMessage(&msg);
     DispatchMessage(&msg);
   }

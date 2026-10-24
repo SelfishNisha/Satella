@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g -O0 -pipe -MMD -MP -I$(SRC_DIR) -I$(SRC_DIR)/core -I$(SRC_DIR)/macros
-LDFLAGS = -lwinmm -static -static-libgcc -static-libstdc++
+LDFLAGS = -lwinmm -lshell32 -static -static-libgcc -static-libstdc++
 SRC_DIR = src
 OBJ_DIR = objects
 DIST_DIR = dist

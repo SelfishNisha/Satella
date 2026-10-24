@@ -8,6 +8,7 @@ using ExtraValue = std::variant<bool, std::string>;
 
 json loadConfig();
 void saveConfig(const json& data);
+void invalidateConfigCache();
 
 std::string getConfigPath();
 json getConfig();
