@@ -2,22 +2,20 @@
 #include <string>
 #include <windows.h>
 
-std::string center(const std::string &text) {
-  // Get console handle and screen buffer info
+// centers text based on the current terminal width so the title looks lined up
+std::string center(const std::string& text) {
   HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
   CONSOLE_SCREEN_BUFFER_INFO csbi;
-  int termWidth = 80; // default fallback
+  int termWidth = 80;
 
   if (GetConsoleScreenBufferInfo(hConsole, &csbi)) {
     termWidth = csbi.srWindow.Right - csbi.srWindow.Left + 1;
   }
 
-  // Calculate padding
   int textLength = static_cast<int>(text.length());
   int totalPadding = termWidth - textLength;
 
   if (totalPadding <= 0) {
-    // Text is longer than terminal width, return as-is
     return text;
   }
 
