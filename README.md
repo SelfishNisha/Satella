@@ -43,7 +43,7 @@ cd Satella/
 ```
 
 ```bash
-make build
+make
 ```
 
 Done your .exe is in dist/Satella.exe
