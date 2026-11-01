@@ -55,7 +55,7 @@ and
 }
 ```
 
-the first one accepts a keybind key. if you don't want the option enabled make the field empty
+the first one accepts a keybind key. if you don't want the option enabled make the field empty.
 
 the second accepts `Fast` `Medium` `Slow`. default is `Medium`
 
