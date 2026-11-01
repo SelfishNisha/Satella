@@ -2,41 +2,41 @@
 
 part<Border> Footer() {
   auto footer = mkpart<Border>();
+  // keep the help/footer pane a fixed size so it doesn't push the cards around
   footer->fixed_height = 9;
   footer->height = 9;
 
-  auto footInner = mkpart<Vertical>();
-  footInner->fixed_height = 9;
+  auto inner = mkpart<Vertical>();
+  inner->fixed_height = 9;
 
-  auto helpLine = mkpart<Horizontal>();
-  auto helpText = mkpart<Label>("Need help? ");
-  auto linkBtn = mkpart<Button>(
-      StyledText().underline("How To Use"),
-      [] { openUrl("https://github.com/selfishnisha/sattela/blob/main/how%20to%20use.md"); });
-  linkBtn->bg_color = Color(26, 27, 38); // flat link look: matches root background
-  linkBtn->hover_color = Color(26, 27, 38);
-  linkBtn->focus_color = Color(26, 27, 38);
-  linkBtn->text_color = Color(122, 162, 247); // TokyoNight primary blue
-  auto noteText = mkpart<Label>(" — opens in your browser");
-  helpLine->add(helpText);
-  helpLine->add(linkBtn);
-  helpLine->add(noteText);
-  footInner->add(helpLine);
+  auto line = mkpart<Horizontal>();
+  auto help = mkpart<Label>("Need help? ");
+  auto link = mkpart<Button>(StyledText().underline("How To Use"), openHowToUseUrl);
+  link->bg_color = Color(26, 27, 38);
+  link->hover_color = Color(26, 27, 38);
+  link->focus_color = Color(26, 27, 38);
+  link->text_color = Color(122, 162, 247);
 
-  auto hint1 = mkpart<Label>(
-      "Tab · move focus   |   Enter/Space · toggle");
-  hint1->fg_color = Color(114, 118, 146);
-  footInner->add(hint1);
+  auto note = mkpart<Label>(" — opens in your browser");
+  line->add(help);
+  line->add(link);
+  line->add(note);
+  inner->add(line);
 
-  auto hint2 = mkpart<Label>("Changes are saved to config.json automatically");
-  hint2->fg_color = Color(114, 118, 146);
-  footInner->add(hint2);
+  auto hintA = mkpart<Label>("Tab · move focus   |   Enter/Space · toggle");
+  hintA->fg_color = Color(114, 118, 146);
+  inner->add(hintA);
 
-  g_statusLabel = mkpart<Label>("");
-  g_statusLabel->fg_color = Color(158, 206, 106); // success green
-  footInner->add(g_statusLabel);
+  auto hintB = mkpart<Label>("Changes are saved to config.json automatically");
+  hintB->fg_color = Color(114, 118, 146);
+  inner->add(hintB);
 
-  footer->add(footInner);
+  // status text is updated live when config writes complete or reloads happen
+  gStatusLabel = mkpart<Label>("");
+  gStatusLabel->fg_color = Color(158, 206, 106);
+  inner->add(gStatusLabel);
+
+  footer->add(inner);
 
   return footer;
 }
