@@ -1,6 +1,7 @@
 #include "config.h"
 
 const json defaultConfig = {
+  {"Hold To Loop", false},
   {"Macros", {
     {"Pearl Catch", {
       {"ID", 1},

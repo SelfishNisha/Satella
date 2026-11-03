@@ -37,6 +37,11 @@ static void setPhysState(WORD vk, bool down) {
 // Runs on its own thread for as long as the hotkey's combo stays physically
 // held down. Calls handleHotkeys(), THEN checks whether to loop again - so
 // the next call can only ever start once the previous one has fully returned.
+static bool holdToLoopEnabled() {
+  json config = getConfig();
+  return config.contains("Hold To Loop") && config["Hold To Loop"].get<bool>();
+}
+
 static void hotkeyRepeatLoop(size_t idx) {
   HotkeyBinding hk = {};
   HotkeyRuntime *rt = nullptr;
@@ -50,7 +55,7 @@ static void hotkeyRepeatLoop(size_t idx) {
 
   do {
     handleHotkeys(hk.id);
-  } while (g_physKeyState[hk.keyVk] &&
+  } while (holdToLoopEnabled() && g_physKeyState[hk.keyVk] &&
            (hk.modVk == 0 || g_physKeyState[hk.modVk]));
 
   rt->active = false;
@@ -70,27 +75,43 @@ static LRESULT CALLBACK LowLevelKeyboardProc(int nCode, WPARAM wParam,
 
       // fire only on the down transition, ignore key-repeat
       if (!isKeyUp && !wasDown) {
-        std::vector<size_t> matches;
+        std::vector<int> matchedIds;
         {
           std::lock_guard<std::mutex> lk(g_hotkeyMutex);
           for (size_t i = 0; i < g_hotkeys.size(); ++i) {
             auto &hk = g_hotkeys[i];
             bool modOk = (hk.modVk == 0) || g_physKeyState[hk.modVk];
             if (modOk && hk.keyVk == vk)
-              matches.push_back(i);
+              matchedIds.push_back(hk.id);
           }
         }
-        // Start repeat loops outside the lock
-        for (size_t i : matches) {
-          bool expected = false;
+
+        if (holdToLoopEnabled()) {
+          std::vector<size_t> matches;
           {
             std::lock_guard<std::mutex> lk(g_hotkeyMutex);
-            if (i >= g_hotkeyRuntime.size())
-              continue;
-            auto &rt = *g_hotkeyRuntime[i];
-            if (rt.active.compare_exchange_strong(expected, true)) {
-              std::thread(hotkeyRepeatLoop, i).detach();
+            for (size_t i = 0; i < g_hotkeys.size(); ++i) {
+              auto &hk = g_hotkeys[i];
+              bool modOk = (hk.modVk == 0) || g_physKeyState[hk.modVk];
+              if (modOk && hk.keyVk == vk)
+                matches.push_back(i);
             }
+          }
+          for (size_t i : matches) {
+            bool expected = false;
+            {
+              std::lock_guard<std::mutex> lk(g_hotkeyMutex);
+              if (i >= g_hotkeyRuntime.size())
+                continue;
+              auto &rt = *g_hotkeyRuntime[i];
+              if (rt.active.compare_exchange_strong(expected, true)) {
+                std::thread(hotkeyRepeatLoop, i).detach();
+              }
+            }
+          }
+        } else {
+          for (int id : matchedIds) {
+            handleHotkeys(id);
           }
         }
       }

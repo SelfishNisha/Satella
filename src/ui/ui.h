@@ -44,7 +44,7 @@ void saveMacroValue(const std::string& macroName, std::function<void(std::string
 void setMacroFieldValue(const std::string& macroName, const std::string& fieldName, std::string value);
 void setMacroSlotValue(const std::string& macroName, const std::string& slotName, std::string value);
 void setMacroExtraValue(const std::string& macroName, const std::string& extraName, std::string value);
-void handleMacroToggle(const std::string& name, part<Border> border, bool enabled);
+void handleMacroToggle(const std::string& name, part<Border> border, part<Checkbox> checkbox, bool enabled);
 
 // UI builders
 part<Vertical> Header();

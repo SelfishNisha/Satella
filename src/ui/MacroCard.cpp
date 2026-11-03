@@ -21,7 +21,10 @@ part<Border> buildMacroCard(const std::string& name, const json& macro) {
 
   // the toggle is the master switch for this macro
   auto checkbox = mkpart<Checkbox>(StyledText("   Enabled"), enabled);
-  checkbox->on_change = std::bind(&handleMacroToggle, name, border, std::placeholders::_1);
+  checkbox->text_color = enabled ? Color(158, 206, 106) : Color(96, 100, 130);
+  checkbox->focus_color = enabled ? Color(158, 206, 106) : Color(96, 100, 130);
+  checkbox->hover_color = enabled ? Color(158, 206, 106) : Color(96, 100, 130);
+  checkbox->on_change = std::bind(&handleMacroToggle, name, border, checkbox, std::placeholders::_1);
   addMacroCardRow(inner, checkbox, rows);
 
   // base key fields for every macro
@@ -30,7 +33,7 @@ part<Border> buildMacroCard(const std::string& name, const json& macro) {
   addMacroFieldRow(inner, "Key", macro.value("Key", std::string("")), name, std::bind(&setMacroFieldValue, name, "Key", std::placeholders::_1), rows);
 
   if (macro.contains("Slots")) {
-    auto section = mkpart<Label>("Slots");
+    auto section = mkpart<Label>("-- Slots");
     section->fg_color = Color(150, 155, 180);
     addMacroCardRow(inner, section, rows);
     for (auto &[slotName, slotVal] : macro["Slots"].items()) {
@@ -39,7 +42,7 @@ part<Border> buildMacroCard(const std::string& name, const json& macro) {
   }
 
   if (macro.contains("Extra")) {
-    auto section = mkpart<Label>("Extra");
+    auto section = mkpart<Label>("-- Extra");
     section->fg_color = Color(150, 155, 180);
     addMacroCardRow(inner, section, rows);
     for (auto &[extraName, extraVal] : macro["Extra"].items()) {
