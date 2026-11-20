@@ -39,10 +39,6 @@ cd Satella/
 ```
 
 ```bash
-./getLib.bat
-```
-
-```bash
 make
 ```
 
